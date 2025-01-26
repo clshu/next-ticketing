@@ -15,8 +15,17 @@ const TicketCard = () => {
       <h4> Ticket Title</h4>
       <hr className="h-px border-0 bg-page mb-2" />
       <p className="whitespace-pre-wrap">Ticket descriptionn</p>
-      <ProgressDisplay />
-      <StatusDisplay />
+      {/* Make sure ticket cards are the same size no matter how many text they have */}
+      <div className="flex-grow"></div>
+      <div className="flex mt-2">
+        <div className="flex flex-col">
+          <p className="text-xs my-1">01/01/2025 10:10pm</p>
+          <ProgressDisplay />
+        </div>
+        <div className="ml-auto flex items-end">
+          <StatusDisplay />
+        </div>
+      </div>
     </div>
   )
 }
