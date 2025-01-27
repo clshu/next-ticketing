@@ -15,15 +15,35 @@ const startingTicketData = {
 }
 
 const TicketForm = () => {
+  const router = useRouter()
   const [formData, setFormData] = useState(startingTicketData)
 
   const handleChange = (e) => {
-    const value = e.target.value
+    let value = e.target.value
     const name = e.target.name
+    if (name === 'priority') {
+      value = parseInt(value)
+    }
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = async () => {}
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    console.log('formData', formData)
+    const res = await fetch('/api/tickets', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ formData }),
+    })
+    if (!res.ok) {
+      throw new Error('Failed to create ticket')
+    }
+
+    router.refresh()
+    router.push('/')
+  }
 
   return (
     <div className="flex justify-center">
