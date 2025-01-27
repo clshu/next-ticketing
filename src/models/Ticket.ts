@@ -1,10 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
 
-const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/ticket'
-
-mongoose.connect(uri)
-mongoose.Promise = global.Promise
-
 export interface ITicket extends mongoose.Document {
   title: string
   description: string
