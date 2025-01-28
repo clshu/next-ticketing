@@ -29,7 +29,7 @@ const TicketForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('formData', formData)
+
     const res = await fetch('/api/tickets', {
       method: 'POST',
       headers: {
@@ -40,7 +40,7 @@ const TicketForm = () => {
     if (!res.ok) {
       throw new Error('Failed to create ticket')
     }
-
+    // console.log('Response', res)
     router.refresh()
     router.push('/')
   }

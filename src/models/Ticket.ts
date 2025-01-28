@@ -1,19 +1,10 @@
 import dbConnect from '@/lib/dbConnect'
+import { ITicket } from '@/types/models'
 import mongoose, { Schema } from 'mongoose'
 
 await dbConnect()
 
-export interface ITicket extends mongoose.Document {
-  title: string
-  description: string
-  category: string
-  priority: number
-  progress: number
-  status: string
-  active: boolean
-  createdAt?: Date
-  updatedAt?: Date
-}
+export interface MTicket extends ITicket, mongoose.Document {}
 
 const TicketSchema = new Schema(
   {
@@ -29,6 +20,6 @@ const TicketSchema = new Schema(
 )
 
 const Ticket =
-  mongoose.models.Tecket || mongoose.model<ITicket>('Ticket', TicketSchema)
+  mongoose.models.Tecket || mongoose.model<MTicket>('Ticket', TicketSchema)
 
 export default Ticket

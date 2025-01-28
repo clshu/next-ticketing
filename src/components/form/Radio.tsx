@@ -1,4 +1,4 @@
-import { RadioProps } from '@/components/types'
+import { RadioProps } from '@/types/props'
 
 const Radio = ({ formData, handleChange, seq, id, name }: RadioProps) => {
   return (
