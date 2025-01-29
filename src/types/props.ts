@@ -24,3 +24,7 @@ export interface ProgressDisplayProps {
 export interface StatusDisplayProps {
   status: string
 }
+
+export interface DeleteBlockProps {
+  id: string
+}
